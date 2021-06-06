@@ -97,7 +97,7 @@ main_speakers_dataset = spark.read.option("header","true").csv(main_speakers_dat
 # CREATE MAIN_SPEAKERS_AGGREGATE_MODEL, ADD RELATED TALKS TO MAIN_SPEAKERS_AGGREGATE_MODEL
 urls_dataset_agg = tedx_dataset.groupBy(col("main_speaker").alias("main_speaker_ref")).agg(collect_list("url").alias("related_urls"))
 main_speakers_dataset_agg = urls_dataset_agg \
-    .join(main_speaker_dataset, urls_dataset_agg.main_speaker_ref == main_speakers_dataset.main_speaker, "left") \
+    .join(main_speaker_datasets, urls_dataset_agg.main_speaker_ref == main_speakers_dataset.main_speaker, "left") \
     .select(col("main_speaker").alias("main_speaker_name"), col("details"), col("related_urls")) 
     
 main_speakers_dataset_agg.printSchema()
