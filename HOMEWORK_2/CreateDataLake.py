@@ -100,6 +100,7 @@ main_speakers_dataset_agg = urls_dataset_agg \
     .join(main_speakers_dataset, urls_dataset_agg.main_speaker_ref == main_speakers_dataset.main_speaker, "left") \
     .select(col("main_speaker").alias("main_speaker_name"), col("details"), col("related_urls")) 
     
+    
 main_speakers_dataset_agg.printSchema()
 
 
