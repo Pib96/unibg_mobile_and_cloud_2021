@@ -98,7 +98,7 @@ main_speakers_dataset = spark.read.option("header","true").csv(main_speakers_dat
 urls_dataset_agg = tedx_dataset.groupBy(col("main_speaker").alias("main_speaker_ref")).agg(collect_list("url").alias("related_urls"))
 main_speakers_dataset_agg = urls_dataset_agg \
     .join(main_speakers_dataset, urls_dataset_agg.main_speaker_ref == main_speakers_dataset.main_speaker, "left") \
-    .select(col("main_speaker").alias("main_speaker_name"), col("details"), col("related_urls")) 
+    .select(col("main_speaker").alias("main_speaker_name"), col("main_speaker_description"), col("related_urls")) 
     
     
 main_speakers_dataset_agg.printSchema()
