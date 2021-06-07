@@ -11,7 +11,7 @@ print("start")
 for main_speaker in main_speakers:
     try:
         title = wikipedia.search(main_speaker)[0]
-        summary = wikipedia.summary(title)
+        summary = wikipedia.summary(title, sentences=1)
     except:
         summary = ''
 
