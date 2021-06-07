@@ -21,4 +21,3 @@ df = pd.DataFrame.from_records(descriptions)
 df.to_csv('main_speaker_description_dataset.csv')
 print('Done')
 
-
